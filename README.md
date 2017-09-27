@@ -1,1 +1,1 @@
-# template_oracle_mysql_v57_standalone
+Copyright IBM Corp. 2017, 2017

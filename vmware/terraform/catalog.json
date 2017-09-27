@@ -1,0 +1,63 @@
+{
+    "name": "MySQL DB Deployment on a Single VM - VMware vSphere",
+    "description": "This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine.",
+    "version": "1.0",
+    "imageUrl": "",
+    "image": "",
+    "type": "chefcontent",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "VMware vSphere",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "vmware/terraform",
+        "templateFileName": "oracle_mysql_v57_standalone.tf"
+      }
+    },
+    "metadata": {
+      "displayName": "MySQL DB Deployment on a Single VM",
+      "providerDisplayName": "VMware vSphere",
+      "longDescription": "This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine.MySQL DB is installed and configured with a single raw database created.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " VMware<br>"},
+{
+    "title": "Template Version",
+    "description": "1.0<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "Red Hat Enterprise Linux 7<br>Red Hat Enterprise Linux 6<br>Ubuntu 16.04<br>"},
+{
+    "title": "Topology",
+    "description": "1 virtual machine:<br>  MySQL DB<br>    odb instance 1, 1 database<br>"},
+{
+    "title": "Software Deployed",
+    "description": "Oracle MySQL 5.7<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " vCPU = 2, Memory = 4GB, Storage = 25GB<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>2. Detailed system requirements for Oracle Database V12c - https://dev.mysql.com/doc/refman/5.7/en/<br>"}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}
