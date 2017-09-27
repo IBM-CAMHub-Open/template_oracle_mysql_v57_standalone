@@ -1,0 +1,1 @@
+# template_oracle_mysql_v57_standalone
