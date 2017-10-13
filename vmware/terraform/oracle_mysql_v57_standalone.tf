@@ -242,7 +242,7 @@ variable "MySQLNode01_number_of_vcpu" {
 
 variable "MySQLNode01_memory" {
   description = "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024"
-  default = "2048"
+  default = "4096"
 }
 
 variable "MySQLNode01_cluster" {
