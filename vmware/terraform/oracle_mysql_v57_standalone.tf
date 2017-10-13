@@ -9,12 +9,12 @@
 # This is a terraform generated template generated from oracle_mysql_v57_standalone
 
 ##############################################################
-# Keys - CAMC (public/private) & optional User Key (public)
+# Keys - CAMC (public/private) & optional User Key (public) 
 ##############################################################
 variable "user_public_ssh_key" {
-  type        = "string"
+  type = "string"
   description = "User defined public SSH key used to connect to the virtual machine. The format must be in openSSH."
-  default     = "None"
+  default = "None"
 }
 
 variable "ibm_pm_public_ssh_key" {
@@ -27,11 +27,11 @@ variable "ibm_pm_private_ssh_key" {
 
 variable "allow_unverified_ssl" {
   description = "Communication with vsphere server with self signed certificate"
-  default     = "true"
+  default = "true"
 }
 
 ##############################################################
-# Define the vsphere provider
+# Define the vsphere provider 
 ##############################################################
 provider "vsphere" {
   allow_unverified_ssl = "${var.allow_unverified_ssl}"
@@ -42,7 +42,7 @@ resource "random_id" "stack_id" {
 }
 
 ##############################################################
-# Define pattern variables
+# Define pattern variables 
 ##############################################################
 ##### unique stack name #####
 variable "ibm_stack_name" {
@@ -54,169 +54,176 @@ variable "ibm_stack_name" {
 ##### Environment variables #####
 #Variable : ibm_pm_access_token
 variable "ibm_pm_access_token" {
-  type        = "string"
+  type = "string"
   description = "IBM Pattern Manager Access Token"
 }
 
 #Variable : ibm_pm_service
 variable "ibm_pm_service" {
-  type        = "string"
+  type = "string"
   description = "IBM Pattern Manager Service"
 }
 
 #Variable : ibm_sw_repo
 variable "ibm_sw_repo" {
-  type        = "string"
+  type = "string"
   description = "IBM Software Repo Root (https://<hostname>:<port>)"
 }
 
 #Variable : ibm_sw_repo_password
 variable "ibm_sw_repo_password" {
-  type        = "string"
+  type = "string"
   description = "IBM Software Repo Password"
 }
 
 #Variable : ibm_sw_repo_user
 variable "ibm_sw_repo_user" {
-  type        = "string"
+  type = "string"
   description = "IBM Software Repo Username"
-  default     = "repouser"
+  default = "repouser"
 }
+
 
 ##### MySQLNode01 variables #####
 #Variable : MySQLNode01-image
 variable "MySQLNode01-image" {
-  type        = "string"
+  type = "string"
   description = "Operating system image id / template that should be used when creating the virtual image"
 }
 
 #Variable : MySQLNode01-name
 variable "MySQLNode01-name" {
-  type        = "string"
+  type = "string"
   description = "Short hostname of virtual machine"
 }
 
 #Variable : MySQLNode01-os_admin_user
 variable "MySQLNode01-os_admin_user" {
-  type        = "string"
+  type = "string"
   description = "Name of the admin user account in the virtual machine that will be accessed via SSH"
 }
 
 #Variable : MySQLNode01_mysql_config_data_dir
 variable "MySQLNode01_mysql_config_data_dir" {
-  type        = "string"
+  type = "string"
   description = "Directory to store information managed by MySQL server"
-  default     = "/var/lib/mysql"
+  default = "/var/lib/mysql"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_database_name
 variable "MySQLNode01_mysql_config_databases_database_1_database_name" {
-  type        = "string"
+  type = "string"
   description = "Create a sample database in MySQL"
-  default     = "default_database"
+  default = "default_database"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_1_name
 variable "MySQLNode01_mysql_config_databases_database_1_users_user_1_name" {
-  type        = "string"
+  type = "string"
   description = "Name of the first user which is created and allowed to access the created sample database "
-  default     = "defaultUser"
+  default = "defaultUser"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_1_password
 variable "MySQLNode01_mysql_config_databases_database_1_users_user_1_password" {
-  type        = "string"
+  type = "string"
   description = "Password of the first user"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_2_name
 variable "MySQLNode01_mysql_config_databases_database_1_users_user_2_name" {
-  type        = "string"
+  type = "string"
   description = "Name of the second user which is created and allowed to access the created sample database"
-  default     = "defaultUser2"
+  default = "defaultUser2"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_2_password
 variable "MySQLNode01_mysql_config_databases_database_1_users_user_2_password" {
-  type        = "string"
+  type = "string"
   description = "Password of the second user"
 }
 
 #Variable : MySQLNode01_mysql_config_log_file
 variable "MySQLNode01_mysql_config_log_file" {
-  type        = "string"
+  type = "string"
   description = "Log file configured in MySQL"
-  default     = "/var/log/mysqld.log"
+  default = "/var/log/mysqld.log"
 }
 
 #Variable : MySQLNode01_mysql_config_port
 variable "MySQLNode01_mysql_config_port" {
-  type        = "string"
+  type = "string"
   description = "Listen port to be configured in MySQL"
-  default     = "3306"
+  default = "3306"
 }
 
 #Variable : MySQLNode01_mysql_install_from_repo
 variable "MySQLNode01_mysql_install_from_repo" {
-  type        = "string"
+  type = "string"
   description = "Install MySQL from secure repository server or yum repo"
-  default     = "true"
+  default = "true"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_gid
 variable "MySQLNode01_mysql_os_users_daemon_gid" {
-  type        = "string"
+  type = "string"
   description = "Group ID of the default OS user to be used to configure MySQL"
-  default     = "mysql"
+  default = "mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_home
 variable "MySQLNode01_mysql_os_users_daemon_home" {
-  type        = "string"
+  type = "string"
   description = "Home directory of the default OS user to be used to configure MySQL"
-  default     = "/home/mysql"
+  default = "/home/mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_ldap_user
 variable "MySQLNode01_mysql_os_users_daemon_ldap_user" {
-  type        = "string"
+  type = "string"
   description = "A flag which indicates whether to create the MQ USer locally, or utilise an LDAP based user."
-  default     = "false"
+  default = "false"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_name
 variable "MySQLNode01_mysql_os_users_daemon_name" {
-  type        = "string"
+  type = "string"
   description = "User Name of the default OS user to be used to configure MySQL"
-  default     = "mysql"
+  default = "mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_shell
 variable "MySQLNode01_mysql_os_users_daemon_shell" {
-  type        = "string"
+  type = "string"
   description = "Default shell configured on Linux server"
-  default     = "/bin/bash"
+  default = "/bin/bash"
 }
 
 #Variable : MySQLNode01_mysql_root_password
 variable "MySQLNode01_mysql_root_password" {
-  type        = "string"
+  type = "string"
   description = "The password for the MySQL root user"
 }
 
 #Variable : MySQLNode01_mysql_version
 variable "MySQLNode01_mysql_version" {
-  type        = "string"
+  type = "string"
   description = "MySQL Version to be installed"
-  default     = "5.7.17"
+  default = "5.7.17"
 }
+
 
 #########################################################
 ##### Resource : MySQLNode01
 #########################################################
 
+variable "MySQLNode01_domain" {
+  type = "string"
+  description = "Domain Name of virtual machine"
+}
+
 variable "MySQLNode01-os_password" {
-  type        = "string"
+  type = "string"
   description = "Operating System Password for the Operating System User to access virtual machine"
 }
 
@@ -230,12 +237,12 @@ variable "MySQLNode01_datacenter" {
 
 variable "MySQLNode01_number_of_vcpu" {
   description = "Number of virtual CPU for the virtual machine, which is required to be a positive Integer"
-  default     = "2"
+  default = "2"
 }
 
 variable "MySQLNode01_memory" {
   description = "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024"
-  default     = "2048"
+  default = "2048"
 }
 
 variable "MySQLNode01_cluster" {
@@ -243,12 +250,12 @@ variable "MySQLNode01_cluster" {
 }
 
 variable "MySQLNode01_dns_suffixes" {
-  type        = "list"
+  type = "list"
   description = "Name resolution suffixes for the virtual network adapter"
 }
 
 variable "MySQLNode01_dns_servers" {
-  type        = "list"
+  type = "list"
   description = "DNS servers for the virtual network adapter"
 }
 
@@ -273,60 +280,60 @@ variable "MySQLNode01_root_disk_datastore" {
 }
 
 variable "MySQLNode01_root_disk_type" {
-  type        = "string"
+  type = "string"
   description = "Type of template disk volume"
-  default     = "eager_zeroed"
+  default = "eager_zeroed"
 }
 
 variable "MySQLNode01_root_disk_controller_type" {
-  type        = "string"
+  type = "string"
   description = "Type of template disk controller"
-  default     = "scsi"
+  default = "scsi"
 }
 
 variable "MySQLNode01_root_disk_keep_on_remove" {
-  type        = "string"
+  type = "string"
   description = "Delete template disk volume when the virtual machine is deleted"
-  default     = "false"
+  default = "false"
 }
 
 # vsphere vm
 resource "vsphere_virtual_machine" "MySQLNode01" {
-  name         = "${var.MySQLNode01-name}"
-  folder       = "${var.MySQLNode01_folder}"
-  datacenter   = "${var.MySQLNode01_datacenter}"
-  vcpu         = "${var.MySQLNode01_number_of_vcpu}"
-  memory       = "${var.MySQLNode01_memory}"
-  cluster      = "${var.MySQLNode01_cluster}"
+  name = "${var.MySQLNode01-name}"
+  folder = "${var.MySQLNode01_folder}"
+  datacenter = "${var.MySQLNode01_datacenter}"
+  vcpu = "${var.MySQLNode01_number_of_vcpu}"
+  memory = "${var.MySQLNode01_memory}"
+  cluster = "${var.MySQLNode01_cluster}"
   dns_suffixes = "${var.MySQLNode01_dns_suffixes}"
-  dns_servers  = "${var.MySQLNode01_dns_servers}"
+  dns_servers = "${var.MySQLNode01_dns_servers}"
+  domain = "${var.MySQLNode01_domain}"
 
   network_interface {
-    label              = "${var.MySQLNode01_network_interface_label}"
-    ipv4_gateway       = "${var.MySQLNode01_ipv4_gateway}"
-    ipv4_address       = "${var.MySQLNode01_ipv4_address}"
+    label = "${var.MySQLNode01_network_interface_label}"
+    ipv4_gateway = "${var.MySQLNode01_ipv4_gateway}"
+    ipv4_address = "${var.MySQLNode01_ipv4_address}"
     ipv4_prefix_length = "${var.MySQLNode01_ipv4_prefix_length}"
   }
 
   disk {
-    type            = "${var.MySQLNode01_root_disk_type}"
-    template        = "${var.MySQLNode01-image}"
-    datastore       = "${var.MySQLNode01_root_disk_datastore}"
-    keep_on_remove  = "${var.MySQLNode01_root_disk_keep_on_remove}"
+    type = "${var.MySQLNode01_root_disk_type}"
+    template = "${var.MySQLNode01-image}"
+    datastore = "${var.MySQLNode01_root_disk_datastore}"
+    keep_on_remove = "${var.MySQLNode01_root_disk_keep_on_remove}"
     controller_type = "${var.MySQLNode01_root_disk_controller_type}"
   }
 
   # Specify the connection
   connection {
-    type     = "ssh"
-    user     = "${var.MySQLNode01-os_admin_user}"
+    type = "ssh"
+    user = "${var.MySQLNode01-os_admin_user}"
     password = "${var.MySQLNode01-os_password}"
   }
 
   provisioner "file" {
     destination = "MySQLNode01_add_ssh_key.sh"
-
-    content = <<EOF
+    content     = <<EOF
 ##############################################################
 # Licensed Materials - Property of IBM
 #
@@ -390,9 +397,10 @@ EOF
   provisioner "remote-exec" {
     inline = [
       "sudo bash -c 'chmod +x MySQLNode01_add_ssh_key.sh'",
-      "sudo bash -c './MySQLNode01_add_ssh_key.sh  \"${var.MySQLNode01-os_admin_user}\" \"${var.user_public_ssh_key}\" \"${var.ibm_pm_public_ssh_key}\">> MySQLNode01_add_ssh_key.log 2>&1'",
+      "sudo bash -c './MySQLNode01_add_ssh_key.sh  \"${var.MySQLNode01-os_admin_user}\" \"${var.user_public_ssh_key}\" \"${var.ibm_pm_public_ssh_key}\">> MySQLNode01_add_ssh_key.log 2>&1'"
     ]
   }
+
 }
 
 #########################################################
@@ -400,13 +408,12 @@ EOF
 #########################################################
 
 resource "camc_bootstrap" "MySQLNode01_chef_bootstrap_comp" {
-  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.MySQLNode01"]
-  name            = "MySQLNode01_chef_bootstrap_comp"
-  camc_endpoint   = "${var.ibm_pm_service}/v1/bootstrap/chef"
-  access_token    = "${var.ibm_pm_access_token}"
+  depends_on = ["camc_vaultitem.VaultItem","vsphere_virtual_machine.MySQLNode01"]
+  name = "MySQLNode01_chef_bootstrap_comp"
+  camc_endpoint = "${var.ibm_pm_service}/v1/bootstrap/chef"
+  access_token = "${var.ibm_pm_access_token}"
   skip_ssl_verify = true
-  trace           = true
-
+  trace = true
   data = <<EOT
 {
   "os_admin_user": "${var.MySQLNode01-os_admin_user}",
@@ -428,18 +435,18 @@ resource "camc_bootstrap" "MySQLNode01_chef_bootstrap_comp" {
 EOT
 }
 
+
 #########################################################
 ##### Resource : MySQLNode01_oracle_mysql_base
 #########################################################
 
 resource "camc_softwaredeploy" "MySQLNode01_oracle_mysql_base" {
-  depends_on      = ["camc_bootstrap.MySQLNode01_chef_bootstrap_comp"]
-  name            = "MySQLNode01_oracle_mysql_base"
-  camc_endpoint   = "${var.ibm_pm_service}/v1/software_deployment/chef"
-  access_token    = "${var.ibm_pm_access_token}"
+  depends_on = ["camc_bootstrap.MySQLNode01_chef_bootstrap_comp"]
+  name = "MySQLNode01_oracle_mysql_base"
+  camc_endpoint = "${var.ibm_pm_service}/v1/software_deployment/chef"
+  access_token = "${var.ibm_pm_access_token}"
   skip_ssl_verify = true
-  trace           = true
-
+  trace = true
   data = <<EOT
 {
   "os_admin_user": "${var.MySQLNode01-os_admin_user}",
@@ -518,16 +525,16 @@ resource "camc_softwaredeploy" "MySQLNode01_oracle_mysql_base" {
 EOT
 }
 
+
 #########################################################
 ##### Resource : VaultItem
 #########################################################
 
 resource "camc_vaultitem" "VaultItem" {
-  camc_endpoint   = "${var.ibm_pm_service}/v1/vault_item/chef"
-  access_token    = "${var.ibm_pm_access_token}"
+  camc_endpoint = "${var.ibm_pm_service}/v1/vault_item/chef"
+  access_token = "${var.ibm_pm_access_token}"
   skip_ssl_verify = true
-  trace           = true
-
+  trace = true
   data = <<EOT
 {
   "vault_content": {
@@ -554,3 +561,4 @@ output "MySQLNode01_roles" {
 output "stack_id" {
   value = "${random_id.stack_id.hex}"
 }
+

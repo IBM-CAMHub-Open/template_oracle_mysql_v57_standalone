@@ -103,6 +103,17 @@
       "group_name": "virtualmachine"
     },
     {
+      "name": "MySQLNode01_domain",
+      "type": "string",
+      "description": "Domain Name of virtual machine",
+      "hidden": false,
+      "label": "Domain Name - MySQLNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
       "name": "MySQLNode01_mysql_config_databases_database_1_users_user_1_name",
       "type": "string",
       "description": "Name of the first user which is created and allowed to access the created sample database ",
@@ -549,7 +560,7 @@
       "name": "MySQLNode01_memory",
       "type": "string",
       "description": "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024",
-      "default": 4096,
+      "default": 2048,
       "hidden": false,
       "label": "Virtual Machine Memory - MySQLNode01",
       "secured": false,

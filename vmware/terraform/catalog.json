@@ -1,6 +1,6 @@
 {
-    "name": "MySQL DB Deployment on a Single VM - VMware vSphere",
-    "description": "This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine.",
+    "name": "MySQL DB Deployment V5.7 on a single virtual machine - VMware vSphere",
+    "description": "This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine..",
     "version": "1.0",
     "imageUrl": "",
     "image": "",
@@ -23,9 +23,9 @@
       }
     },
     "metadata": {
-      "displayName": "MySQL DB Deployment on a Single VM",
+      "displayName": "MySQL DB Deployment V5.7 on a single virtual machine",
       "providerDisplayName": "VMware vSphere",
-      "longDescription": "This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine.MySQL DB is installed and configured with a single raw database created.",
+      "longDescription": "This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine..",
       "bullets": [{
     "title": "Clouds",
     "description": " VMware<br>"},
@@ -34,10 +34,10 @@
     "description": "1.0<br>"},
 {
     "title": "Operating Systems Supported",
-    "description": "Red Hat Enterprise Linux 7<br>Red Hat Enterprise Linux 6<br>Ubuntu 16.04<br>"},
+    "description": "Red Hat Enterprise Linux 7<br>Ubuntu 16.04<br>"},
 {
     "title": "Topology",
-    "description": "1 virtual machine:<br>  MySQL DB<br>    odb instance 1, 1 database<br>"},
+    "description": "1 virtual machine:<br>  MySQL DB<br>"},
 {
     "title": "Software Deployed",
     "description": "Oracle MySQL 5.7<br>"},
@@ -46,7 +46,7 @@
     "description": " vCPU = 2, Memory = 4GB, Storage = 25GB<br>"},
 {
     "title": "Usage and Special Notes",
-    "description": "1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>2. Detailed system requirements for Oracle Database V12c - https://dev.mysql.com/doc/refman/5.7/en/<br>"}
+    "description": "1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>2. Detailed system requirements for Oracle Database V5.7 - <a href=\"https://dev.mysql.com/doc/refman/5.7/en/\" target=\"_blank\">https://dev.mysql.com/doc/refman/5.7/en/</a><br>"}
 ],
       "featuredImageUrl": "",
       "imageUrl": "",

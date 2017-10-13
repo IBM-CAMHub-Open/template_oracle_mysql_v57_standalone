@@ -1,9 +1,9 @@
-# Template - MySQL DB Deployment on a Single VM
+# Template - MySQL DB Deployment V5.7 on a single virtual machine
 Template Version - 1.0
 
 ## Description
 
-This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine.<br>MySQL DB is installed and configured with a single raw database created.<br>
+This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine..<br>
 
 ## Features
 
@@ -18,14 +18,12 @@ This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine.<br>
 ### Operating Systems Supported
 
 Red Hat Enterprise Linux 7<br>
-Red Hat Enterprise Linux 6<br>
 Ubuntu 16.04<br>
 <br>
 ### Topology
 
 1 virtual machine:<br>
   MySQL DB<br>
-    odb instance 1, 1 database<br>
 <br>
 ### Software Deployed
 
@@ -38,7 +36,7 @@ Oracle MySQL 5.7<br>
 ### Usage and Special Notes
 
 1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>
-2. Detailed system requirements for Oracle Database V12c - https://dev.mysql.com/doc/refman/5.7/en/<br>
+2. Detailed system requirements for Oracle Database V5.7 - <a href=\"https://dev.mysql.com/doc/refman/5.7/en/\" target=\"_blank\">https://dev.mysql.com/doc/refman/5.7/en/</a><br>
 <br>
 
 
