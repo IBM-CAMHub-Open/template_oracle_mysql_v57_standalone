@@ -1,6 +1,6 @@
 {
-    "name": "MySQL DB Deployment V5.7 on a single virtual machine - VMware vSphere",
-    "description": "This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine..",
+    "name": "MySQL V5.7 on a single virtual machine - VMware vSphere",
+    "description": "This template deploys Oracle MySQL V5.7 on a Linux virtual machine.",
     "version": "1.0",
     "imageUrl": "",
     "image": "",
@@ -23,9 +23,9 @@
       }
     },
     "metadata": {
-      "displayName": "MySQL DB Deployment V5.7 on a single virtual machine",
+      "displayName": "MySQL V5.7 on a single virtual machine",
       "providerDisplayName": "VMware vSphere",
-      "longDescription": "This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine..",
+      "longDescription": "This template deploys Oracle MySQL V5.7 on a Linux virtual machine.",
       "bullets": [{
     "title": "Clouds",
     "description": " VMware<br>"},
@@ -37,13 +37,13 @@
     "description": "Red Hat Enterprise Linux 7<br>Ubuntu 16.04<br>"},
 {
     "title": "Topology",
-    "description": "1 virtual machine:<br>  MySQL DB<br>"},
+    "description": "1 virtual machine:<br>  MySQL database<br>"},
 {
     "title": "Software Deployed",
-    "description": "Oracle MySQL 5.7<br>"},
+    "description": "Oracle MySQL V5.7<br>"},
 {
     "title": "Default Virtual Machine Settings",
-    "description": " vCPU = 2, Memory = 4GB, Storage = 25GB<br>"},
+    "description": " vCPU 2, Memory (GB) 4<br>"},
 {
     "title": "Usage and Special Notes",
     "description": "1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>2. Detailed system requirements for Oracle Database V5.7 - <a href=\"https://dev.mysql.com/doc/refman/5.7/en/\" target=\"_blank\">https://dev.mysql.com/doc/refman/5.7/en/</a><br>"}

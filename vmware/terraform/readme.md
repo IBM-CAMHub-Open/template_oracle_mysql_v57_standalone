@@ -1,9 +1,9 @@
-# Template - MySQL DB Deployment V5.7 on a single virtual machine
+# Template - MySQL V5.7 on a single virtual machine
 Template Version - 1.0
 
 ## Description
 
-This template deploys Oracle MySQL Database V5.7 on a Linux virtual machine..<br>
+This template deploys Oracle MySQL V5.7 on a Linux virtual machine.<br>
 
 ## Features
 
@@ -23,15 +23,15 @@ Ubuntu 16.04<br>
 ### Topology
 
 1 virtual machine:<br>
-  MySQL DB<br>
+  MySQL database<br>
 <br>
 ### Software Deployed
 
-Oracle MySQL 5.7<br>
+Oracle MySQL V5.7<br>
 <br>
 ### Default Virtual Machine Settings
 
- vCPU = 2, Memory = 4GB, Storage = 25GB<br>
+ vCPU 2, Memory (GB) 4<br>
 <br>
 ### Usage and Special Notes
 
