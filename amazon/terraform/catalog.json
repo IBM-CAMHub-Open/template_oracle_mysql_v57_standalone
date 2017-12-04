@@ -1,5 +1,5 @@
 {
-    "name": "MySQL DB Deployment V5.7 on a single virtual machine - VMware vSphere",
+    "name": "MySQL DB Deployment V5.7 on a single virtual machine - Amazon EC2",
     "description": "This template deploys Oracle MySQL V5.7 on a Linux virtual machine.",
     "version": "1.0.2",
     "imageUrl": "",
@@ -9,7 +9,7 @@
     "manifest": {
       "template_type": "Terraform",
       "template_format": "HCL",
-      "template_provider": "VMware vSphere",
+      "template_provider": "Amazon EC2",
       "template": {
         "templateData": "",
         "templateVariables": "",
@@ -18,17 +18,17 @@
       "template_source": {
         "githubRepoUrl": "",
         "githubAccessToken": "",
-        "relativePathToTemplateFolder": "vmware/terraform",
+        "relativePathToTemplateFolder": "amazon/terraform",
         "templateFileName": "oracle_mysql_v57_standalone.tf"
       }
     },
     "metadata": {
       "displayName": "MySQL DB Deployment V5.7 on a single virtual machine",
-      "providerDisplayName": "VMware vSphere",
+      "providerDisplayName": "Amazon EC2",
       "longDescription": "This template deploys Oracle MySQL V5.7 on a Linux virtual machine.",
       "bullets": [{
     "title": "Clouds",
-    "description": " VMware<br>"},
+    "description": " Amazon<br>"},
 {
     "title": "Template Version",
     "description": "1.0.2<br>"},
@@ -43,7 +43,7 @@
     "description": "Oracle MySQL V5.7<br>"},
 {
     "title": "Default Virtual Machine Settings",
-    "description": " vCPU 2, Memory (GB) 4<br>"},
+    "description": " t2.medium, vCPU 2, Mem (GiB) 4, EBS (GB) 25<br>"},
 {
     "title": "Usage and Special Notes",
     "description": "1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>2. Detailed system requirements for Oracle Database V5.7 - <a href=\"https://dev.mysql.com/doc/refman/5.7/en/\" target=\"_blank\">https://dev.mysql.com/doc/refman/5.7/en/</a><br>"}
