@@ -22,7 +22,6 @@ variable "ibm_pm_private_ssh_key" {
 variable "user_public_ssh_key" {
   type = "string"
   description = "User defined public SSH key used to connect to the virtual machine. The format must be in openSSH."
-  default = "None"
 }
 
 ##############################################################
@@ -61,15 +60,6 @@ variable "ibm_stack_name" {
   description = "A unique stack name."
 }
 
-#### Default OS Admin User Map ####
-variable "default_os_admin_user" {
-  type        = "map"
-  description = "look up os_admin_user using resource image"
-  default = {
-    UBUNTU_16_64 = "root"
-    REDHAT_7_64 = "root"
-  }
-}
 
 ##### Environment variables #####
 #Variable : ibm_pm_access_token
@@ -100,7 +90,6 @@ variable "ibm_sw_repo_password" {
 variable "ibm_sw_repo_user" {
   type = "string"
   description = "IBM Software Repo Username"
-  default = "repouser"
 }
 
 
@@ -109,14 +98,6 @@ variable "ibm_sw_repo_user" {
 variable "MySQLNode01-image" {
   type = "string"
   description = "Operating system image id / template that should be used when creating the virtual image"
-  default = "REDHAT_7_64"
-}
-
-#Variable : MySQLNode01-mgmt-network-public
-variable "MySQLNode01-mgmt-network-public" {
-  type = "string"
-  description = "Expose and use public IP of virtual machine for internal communication"
-  default = "true"
 }
 
 #Variable : MySQLNode01-name
@@ -135,34 +116,24 @@ variable "MySQLNode01-os_admin_user" {
 variable "MySQLNode01_mysql_config_data_dir" {
   type = "string"
   description = "Directory to store information managed by MySQL server"
-  default = "/var/lib/mysql"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_database_name
 variable "MySQLNode01_mysql_config_databases_database_1_database_name" {
   type = "string"
   description = "Create a sample database in MySQL"
-  default = "default_database"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_1_name
 variable "MySQLNode01_mysql_config_databases_database_1_users_user_1_name" {
   type = "string"
   description = "Name of the first user which is created and allowed to access the created sample database "
-  default = "defaultUser"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_1_password
 variable "MySQLNode01_mysql_config_databases_database_1_users_user_1_password" {
   type = "string"
-  description = "Password of the first user"
-}
-
-#Variable : MySQLNode01_mysql_config_databases_database_1_users_user_2_name
-variable "MySQLNode01_mysql_config_databases_database_1_users_user_2_name" {
-  type = "string"
   description = "Name of the second user which is created and allowed to access the created sample database"
-  default = "defaultUser2"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_2_password
@@ -175,56 +146,48 @@ variable "MySQLNode01_mysql_config_databases_database_1_users_user_2_password" {
 variable "MySQLNode01_mysql_config_log_file" {
   type = "string"
   description = "Log file configured in MySQL"
-  default = "/var/log/mysqld.log"
 }
 
 #Variable : MySQLNode01_mysql_config_port
 variable "MySQLNode01_mysql_config_port" {
   type = "string"
   description = "Listen port to be configured in MySQL"
-  default = "3306"
 }
 
 #Variable : MySQLNode01_mysql_install_from_repo
 variable "MySQLNode01_mysql_install_from_repo" {
   type = "string"
   description = "Install MySQL from secure repository server or yum repo"
-  default = "true"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_gid
 variable "MySQLNode01_mysql_os_users_daemon_gid" {
   type = "string"
   description = "Group ID of the default OS user to be used to configure MySQL"
-  default = "mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_home
 variable "MySQLNode01_mysql_os_users_daemon_home" {
   type = "string"
   description = "Home directory of the default OS user to be used to configure MySQL"
-  default = "/home/mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_ldap_user
 variable "MySQLNode01_mysql_os_users_daemon_ldap_user" {
   type = "string"
   description = "A flag which indicates whether to create the MQ USer locally, or utilise an LDAP based user."
-  default = "false"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_name
 variable "MySQLNode01_mysql_os_users_daemon_name" {
   type = "string"
   description = "User Name of the default OS user to be used to configure MySQL"
-  default = "mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_shell
 variable "MySQLNode01_mysql_os_users_daemon_shell" {
   type = "string"
   description = "Default shell configured on Linux server"
-  default = "/bin/bash"
 }
 
 #Variable : MySQLNode01_mysql_root_password
@@ -237,7 +200,14 @@ variable "MySQLNode01_mysql_root_password" {
 variable "MySQLNode01_mysql_version" {
   type = "string"
   description = "MySQL Version to be installed"
-  default = "5.7.17"
+}
+
+
+##### virtualmachine variables #####
+#Variable : MySQLNode01-mgmt-network-public
+variable "MySQLNode01-mgmt-network-public" {
+  type = "string"
+  description = "Expose and use public IP of virtual machine for internal communication"
 }
 
 
@@ -245,7 +215,6 @@ variable "MySQLNode01_mysql_version" {
 ##### domain name #####
 variable "runtime_domain" {
   description = "domain name"
-  default = "cam.ibm.com"
 }
 
 
@@ -258,7 +227,6 @@ variable "runtime_domain" {
 variable "MySQLNode01_datacenter" {
   type = "string"
   description = "IBMCloud datacenter where infrastructure resources will be deployed"
-  default = "dal05"
 }
 
 
@@ -266,7 +234,6 @@ variable "MySQLNode01_datacenter" {
 variable "MySQLNode01_private_network_only" {
   type = "string"
   description = "Provision the virtual machine with only private IP"
-  default = "false"
 }
 
 
@@ -274,7 +241,6 @@ variable "MySQLNode01_private_network_only" {
 variable "MySQLNode01_number_of_cores" {
   type = "string"
   description = "Number of CPU cores, which is required to be a positive Integer"
-  default = "2"
 }
 
 
@@ -282,7 +248,6 @@ variable "MySQLNode01_number_of_cores" {
 variable "MySQLNode01_memory" {
   type = "string"
   description = "Amount of Memory (MBs), which is required to be one or more times of 1024"
-  default = "4096"
 }
 
 
@@ -290,7 +255,6 @@ variable "MySQLNode01_memory" {
 variable "MySQLNode01_network_speed" {
   type = "string"
   description = "Bandwidth of network communication applied to the virtual machine"
-  default = "10"
 }
 
 
@@ -298,7 +262,6 @@ variable "MySQLNode01_network_speed" {
 variable "MySQLNode01_hourly_billing" {
   type = "string"
   description = "Billing cycle: hourly billed or monthly billed"
-  default = "true"
 }
 
 
@@ -306,7 +269,6 @@ variable "MySQLNode01_hourly_billing" {
 variable "MySQLNode01_dedicated_acct_host_only" {
   type = "string"
   description = "Shared or dedicated host, where dedicated host usually means higher performance and cost"
-  default = "false"
 }
 
 
@@ -314,13 +276,11 @@ variable "MySQLNode01_dedicated_acct_host_only" {
 variable "MySQLNode01_local_disk" {
   type = "string"
   description = "User local disk or SAN disk"
-  default = "false"
 }
 
 variable "MySQLNode01_root_disk_size" {
   type = "string"
   description = "Root Disk Size - MySQLNode01"
-  default = "25"
 }
 
 resource "ibm_compute_vm_instance" "MySQLNode01" {
@@ -339,7 +299,7 @@ resource "ibm_compute_vm_instance" "MySQLNode01" {
   ssh_key_ids = ["${data.ibm_compute_ssh_key.ibm_pm_public_key.id}"]
   # Specify the ssh connection
   connection {
-    user = "${var.MySQLNode01-os_admin_user == "" ? lookup(var.default_os_admin_user, var.MySQLNode01-image) : var.MySQLNode01-os_admin_user}"
+    user = "${var.MySQLNode01-os_admin_user}"
     private_key = "${base64decode(var.ibm_pm_private_ssh_key)}"
   }
 
@@ -411,7 +371,7 @@ resource "camc_bootstrap" "MySQLNode01_chef_bootstrap_comp" {
   trace = true
   data = <<EOT
 {
-  "os_admin_user": "${var.MySQLNode01-os_admin_user == "default"? lookup(var.default_os_admin_user, var.MySQLNode01-image) : var.MySQLNode01-os_admin_user}",
+  "os_admin_user": "${var.MySQLNode01-os_admin_user}",
   "stack_id": "${random_id.stack_id.hex}",
   "environment_name": "_default",
   "host_ip": "${var.MySQLNode01-mgmt-network-public == "false" ? ibm_compute_vm_instance.MySQLNode01.ipv4_address_private : ibm_compute_vm_instance.MySQLNode01.ipv4_address}",
@@ -444,7 +404,7 @@ resource "camc_softwaredeploy" "MySQLNode01_oracle_mysql_base" {
   trace = true
   data = <<EOT
 {
-  "os_admin_user": "${var.MySQLNode01-os_admin_user == "default"? lookup(var.default_os_admin_user, var.MySQLNode01-image) : var.MySQLNode01-os_admin_user}",
+  "os_admin_user": "${var.MySQLNode01-os_admin_user}",
   "stack_id": "${random_id.stack_id.hex}",
   "environment_name": "_default",
   "host_ip": "${var.MySQLNode01-mgmt-network-public == "false" ? ibm_compute_vm_instance.MySQLNode01.ipv4_address_private : ibm_compute_vm_instance.MySQLNode01.ipv4_address}",
@@ -467,9 +427,6 @@ resource "camc_softwaredeploy" "MySQLNode01_oracle_mysql_base" {
             "users": {
               "user_1": {
                 "name": "${var.MySQLNode01_mysql_config_databases_database_1_users_user_1_name}"
-              },
-              "user_2": {
-                "name": "${var.MySQLNode01_mysql_config_databases_database_1_users_user_2_name}"
               }
             }
           }

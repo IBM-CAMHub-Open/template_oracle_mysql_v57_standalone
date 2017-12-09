@@ -12,10 +12,6 @@
       "label": "Cloud Input Variables"
     },
     {
-      "name": "virtualmachine",
-      "label": "Virtual Machine Input Variables"
-    },
-    {
       "name": "ssh_keys",
       "label": "SSH Keys"
     },
@@ -26,6 +22,10 @@
     {
       "name": "mysqlnode01",
       "label": "MySQLNode01"
+    },
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
     }
   ],
   "output_groups": [
@@ -125,21 +125,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
-    },
-    {
-      "name": "MySQLNode01_mysql_config_databases_database_1_users_user_1_password",
-      "type": "string",
-      "description": "Password of the first user",
-      "hidden": false,
-      "label": "First User Password to Access the Sample Database - MySQLNode01",
-      "secured": true,
-      "required": true,
-      "immutable": false,
-      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
-      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
-      "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_mysql_os_users_daemon_gid",
@@ -152,7 +138,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_mysql_os_users_daemon_home",
@@ -165,7 +151,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "ibm_pm_access_token",
@@ -242,10 +228,6 @@
           "default": true
         },
         {
-          "value": ", ",
-          "label": ", "
-        },
-        {
           "value": "false",
           "label": "false"
         }
@@ -253,7 +235,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_mysql_config_data_dir",
@@ -266,7 +248,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_mysql_config_log_file",
@@ -279,7 +261,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_mysql_version",
@@ -292,7 +274,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_mysql_config_port",
@@ -305,7 +287,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_mysql_root_password",
@@ -314,12 +296,12 @@
       "hidden": false,
       "label": "MySQL root password - MySQLNode01",
       "secured": true,
-      "required": true,
-      "immutable": false,
       "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
       "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
+      "required": true,
+      "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_mysql_os_users_daemon_shell",
@@ -332,7 +314,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01-image",
@@ -402,20 +384,21 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
-      "name": "MySQLNode01_mysql_config_databases_database_1_users_user_2_name",
+      "name": "MySQLNode01_mysql_config_databases_database_1_users_user_1_password",
       "type": "string",
       "description": "Name of the second user which is created and allowed to access the created sample database",
-      "default": "defaultUser2",
       "hidden": false,
       "label": "Second User Name to Access the Sample Database - MySQLNode01",
-      "secured": false,
+      "secured": true,
+      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
+      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_mysql_config_databases_database_1_users_user_2_password",
@@ -424,12 +407,12 @@
       "hidden": false,
       "label": "Second User Password to Access the Sample Database - MySQLNode01",
       "secured": true,
-      "required": true,
-      "immutable": false,
       "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
       "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
+      "required": true,
+      "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01-name",
@@ -534,10 +517,6 @@
           "label": "true"
         },
         {
-          "value": ", ",
-          "label": ", "
-        },
-        {
           "value": "false",
           "label": "false",
           "default": true
@@ -546,7 +525,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_mysql_os_users_daemon_name",
@@ -559,7 +538,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-	    "group_name": "mysqlnode01"
+      "group_name": "mysqlnode01"
     },
     {
       "name": "MySQLNode01_ipv4_gateway",
@@ -695,6 +674,7 @@
       "secured": false,
       "required": true,
       "immutable": false,
+      "immutable_after_create": true,
       "group_name": "ssh_keys"
     }
   ],

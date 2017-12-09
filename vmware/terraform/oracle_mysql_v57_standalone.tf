@@ -14,7 +14,6 @@
 variable "user_public_ssh_key" {
   type = "string"
   description = "User defined public SSH key used to connect to the virtual machine. The format must be in openSSH."
-  default = "None"
 }
 
 variable "ibm_pm_public_ssh_key" {
@@ -27,7 +26,6 @@ variable "ibm_pm_private_ssh_key" {
 
 variable "allow_unverified_ssl" {
   description = "Communication with vsphere server with self signed certificate"
-  default = "true"
 }
 
 ##############################################################
@@ -58,7 +56,6 @@ variable "ibm_stack_name" {
   description = "A unique stack name."
 }
 
-#### Default OS Admin User Map ####
 
 ##### Environment variables #####
 #Variable : ibm_pm_access_token
@@ -89,7 +86,6 @@ variable "ibm_sw_repo_password" {
 variable "ibm_sw_repo_user" {
   type = "string"
   description = "IBM Software Repo Username"
-  default = "repouser"
 }
 
 
@@ -116,34 +112,24 @@ variable "MySQLNode01-os_admin_user" {
 variable "MySQLNode01_mysql_config_data_dir" {
   type = "string"
   description = "Directory to store information managed by MySQL server"
-  default = "/var/lib/mysql"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_database_name
 variable "MySQLNode01_mysql_config_databases_database_1_database_name" {
   type = "string"
   description = "Create a sample database in MySQL"
-  default = "default_database"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_1_name
 variable "MySQLNode01_mysql_config_databases_database_1_users_user_1_name" {
   type = "string"
   description = "Name of the first user which is created and allowed to access the created sample database "
-  default = "defaultUser"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_1_password
 variable "MySQLNode01_mysql_config_databases_database_1_users_user_1_password" {
   type = "string"
-  description = "Password of the first user"
-}
-
-#Variable : MySQLNode01_mysql_config_databases_database_1_users_user_2_name
-variable "MySQLNode01_mysql_config_databases_database_1_users_user_2_name" {
-  type = "string"
   description = "Name of the second user which is created and allowed to access the created sample database"
-  default = "defaultUser2"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_2_password
@@ -156,56 +142,48 @@ variable "MySQLNode01_mysql_config_databases_database_1_users_user_2_password" {
 variable "MySQLNode01_mysql_config_log_file" {
   type = "string"
   description = "Log file configured in MySQL"
-  default = "/var/log/mysqld.log"
 }
 
 #Variable : MySQLNode01_mysql_config_port
 variable "MySQLNode01_mysql_config_port" {
   type = "string"
   description = "Listen port to be configured in MySQL"
-  default = "3306"
 }
 
 #Variable : MySQLNode01_mysql_install_from_repo
 variable "MySQLNode01_mysql_install_from_repo" {
   type = "string"
   description = "Install MySQL from secure repository server or yum repo"
-  default = "true"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_gid
 variable "MySQLNode01_mysql_os_users_daemon_gid" {
   type = "string"
   description = "Group ID of the default OS user to be used to configure MySQL"
-  default = "mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_home
 variable "MySQLNode01_mysql_os_users_daemon_home" {
   type = "string"
   description = "Home directory of the default OS user to be used to configure MySQL"
-  default = "/home/mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_ldap_user
 variable "MySQLNode01_mysql_os_users_daemon_ldap_user" {
   type = "string"
   description = "A flag which indicates whether to create the MQ USer locally, or utilise an LDAP based user."
-  default = "false"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_name
 variable "MySQLNode01_mysql_os_users_daemon_name" {
   type = "string"
   description = "User Name of the default OS user to be used to configure MySQL"
-  default = "mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_shell
 variable "MySQLNode01_mysql_os_users_daemon_shell" {
   type = "string"
   description = "Default shell configured on Linux server"
-  default = "/bin/bash"
 }
 
 #Variable : MySQLNode01_mysql_root_password
@@ -218,9 +196,10 @@ variable "MySQLNode01_mysql_root_password" {
 variable "MySQLNode01_mysql_version" {
   type = "string"
   description = "MySQL Version to be installed"
-  default = "5.7.17"
 }
 
+
+##### virtualmachine variables #####
 
 #########################################################
 ##### Resource : MySQLNode01
@@ -245,12 +224,10 @@ variable "MySQLNode01_domain" {
 
 variable "MySQLNode01_number_of_vcpu" {
   description = "Number of virtual CPU for the virtual machine, which is required to be a positive Integer"
-  default = "2"
 }
 
 variable "MySQLNode01_memory" {
   description = "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024"
-  default = "4096"
 }
 
 variable "MySQLNode01_cluster" {
@@ -285,7 +262,6 @@ variable "MySQLNode01_ipv4_prefix_length" {
 
 variable "MySQLNode01_adapter_type" {
   description = "Network adapter type for vNIC Configuration"
-  default = "vmxnet3"
 }
 
 variable "MySQLNode01_root_disk_datastore" {
@@ -295,19 +271,16 @@ variable "MySQLNode01_root_disk_datastore" {
 variable "MySQLNode01_root_disk_type" {
   type = "string"
   description = "Type of template disk volume"
-  default = "eager_zeroed"
 }
 
 variable "MySQLNode01_root_disk_controller_type" {
   type = "string"
   description = "Type of template disk controller"
-  default = "scsi"
 }
 
 variable "MySQLNode01_root_disk_keep_on_remove" {
   type = "string"
   description = "Delete template disk volume when the virtual machine is deleted"
-  default = "false"
 }
 
 # vsphere vm
@@ -482,9 +455,6 @@ resource "camc_softwaredeploy" "MySQLNode01_oracle_mysql_base" {
             "users": {
               "user_1": {
                 "name": "${var.MySQLNode01_mysql_config_databases_database_1_users_user_1_name}"
-              },
-              "user_2": {
-                "name": "${var.MySQLNode01_mysql_config_databases_database_1_users_user_2_name}"
               }
             }
           }
