@@ -1,11 +1,11 @@
 {
-  "input_namespaces": [
+  "input_datatypes": [
     {
       "name": "advanced_content_runtime_chef",
       "label": "Advanced Content Runtime"
     }
   ],
-  "output_namespace": "content_template_output",
+  "output_datatype": "content_template_output",
   "input_groups": [
     {
       "name": "cloud",
@@ -36,6 +36,17 @@
   ],
   "template_input_params": [
     {
+      "name": "ibm_stack_id",
+      "type": "string",
+      "description": "A unique stack id.",
+      "hidden": true,
+      "label": "A unique stack id.",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment"
+    },
+    {
       "name": "ibm_stack_name",
       "type": "string",
       "description": "A unique stack name.",
@@ -44,66 +55,6 @@
       "secured": false,
       "required": true,
       "immutable": false,
-      "group_name": "environment"
-    },
-    {
-      "name": "ibm_pm_access_token",
-      "type": "string",
-      "description": "IBM Pattern Manager Access Token",
-      "hidden": true,
-      "label": "IBM Pattern Manager Access Token",
-      "secured": true,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_pm_access_token}"
-    },
-    {
-      "name": "ibm_pm_service",
-      "type": "string",
-      "description": "IBM Pattern Manager Service",
-      "hidden": true,
-      "label": "IBM Pattern Manager Service",
-      "secured": false,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_pm_service}"
-    },
-    {
-      "name": "ibm_sw_repo_password",
-      "type": "string",
-      "description": "IBM Software Repo Password",
-      "hidden": true,
-      "label": "IBM Software Repo Password",
-      "secured": true,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
-    },
-    {
-      "name": "ibm_sw_repo",
-      "type": "string",
-      "description": "IBM Software Repo Root (https://<hostname>:<port>)",
-      "hidden": true,
-      "label": "IBM Software Repo Root",
-      "secured": false,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
-    },
-    {
-      "name": "ibm_sw_repo_user",
-      "type": "string",
-      "description": "IBM Software Repo Username",
-      "default": "${advanced_content_runtime_chef.ibm_sw_repo_user}",
-      "hidden": true,
-      "label": "IBM Software Repo Username",
-      "secured": false,
-      "required": true,
-      "immutable": true,
       "group_name": "environment"
     },
     {
@@ -167,6 +118,69 @@
       "immutable": false,
       "immutable_after_create": true,
       "group_name": "mysqlnode01"
+    },
+    {
+      "name": "ibm_pm_access_token",
+      "type": "string",
+      "description": "IBM Pattern Manager Access Token",
+      "hidden": true,
+      "label": "IBM Pattern Manager Access Token",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_access_token}"
+    },
+    {
+      "name": "ibm_pm_service",
+      "type": "string",
+      "description": "IBM Pattern Manager Service",
+      "hidden": true,
+      "label": "IBM Pattern Manager Service",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_service}"
+    },
+    {
+      "name": "ibm_sw_repo_password",
+      "type": "string",
+      "description": "IBM Software Repo Password",
+      "hidden": true,
+      "label": "IBM Software Repo Password",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
+    },
+    {
+      "name": "ibm_sw_repo",
+      "type": "string",
+      "description": "IBM Software Repo Root (https://<hostname>:<port>)",
+      "hidden": true,
+      "label": "IBM Software Repo Root",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
+    },
+    {
+      "name": "ibm_sw_repo_user",
+      "type": "string",
+      "description": "IBM Software Repo Username",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_user}",
+      "hidden": true,
+      "label": "IBM Software Repo Username",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment"
     },
     {
       "name": "MySQLNode01_datacenter",
@@ -568,11 +582,11 @@
       "hidden": false,
       "label": "MySQL root password - MySQLNode01",
       "secured": true,
-      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
-      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
+      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "group_name": "mysqlnode01"
     },
     {
@@ -615,19 +629,19 @@
       "name": "MySQLNode01_root_disk_size",
       "type": "string",
       "description": "Root Disk Size - MySQLNode01",
-      "default": "25",
+      "default": "100",
       "hidden": false,
       "label": "Root Disk Size - MySQLNode01",
       "secured": false,
       "options": [
         {
           "value": "25",
-          "label": "25 GB",
-          "default": true
+          "label": "25 GB"
         },
         {
           "value": "100",
-          "label": "100 GB"
+          "label": "100 GB",
+          "default": true
         }
       ],
       "required": true,
@@ -650,15 +664,15 @@
     {
       "name": "MySQLNode01_mysql_config_databases_database_1_users_user_1_password",
       "type": "string",
-      "description": "Name of the second user which is created and allowed to access the created sample database",
+      "description": "Password of the first user",
       "hidden": false,
       "label": "Second User Name to Access the Sample Database - MySQLNode01",
       "secured": true,
-      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
-      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
+      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "group_name": "mysqlnode01"
     },
     {
@@ -668,11 +682,11 @@
       "hidden": false,
       "label": "Second User Password to Access the Sample Database - MySQLNode01",
       "secured": true,
-      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
-      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
+      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "group_name": "mysqlnode01"
     },
     {

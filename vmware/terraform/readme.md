@@ -1,5 +1,5 @@
 # Template - MySQL DB Deployment V5.7 on a single virtual machine
-Template Version - 1.0
+Template Version - 2.0
 
 ## Description
 
@@ -10,10 +10,6 @@ This template deploys Oracle MySQL V5.7 on a Linux virtual machine.<br>
 ### Clouds
 
  VMware<br>
-<br>
-### Template Version
-
-1.0<br>
 <br>
 ### Operating Systems Supported
 
@@ -31,7 +27,7 @@ Oracle MySQL V5.7<br>
 <br>
 ### Default Virtual Machine Settings
 
- vCPU 2, Memory (GB) 4<br>
+ vCPU 2, Memory (GB) 4, Disk (GB) 100<br>
 <br>
 ### Usage and Special Notes
 
@@ -44,7 +40,7 @@ Oracle MySQL V5.7<br>
 
 ### License and Maintainer
 
-Copyright IBM Corp. 2016, 2017 
+Copyright IBM Corp. 2017, 2018
 
 ### Target Cloud Type
 
@@ -258,4 +254,3 @@ The following is required prior to deploying the template on the target cloud. T
 </table>
 
 These variables are typically defined when creating a Cloud Connection.
-

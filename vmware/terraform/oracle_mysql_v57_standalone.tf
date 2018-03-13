@@ -1,19 +1,32 @@
 # =================================================================
-# Licensed Materials - Property of IBM
-# 5737-E67
-# @ Copyright IBM Corporation 2016, 2017 All Rights Reserved
-# US Government Users Restricted Rights - Use, duplication or disclosure
-# restricted by GSA ADP Schedule Contract with IBM Corp.
+# Copyright 2017 IBM Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+#	you may not use this file except in compliance with the License.
+#	You may obtain a copy of the License at
+#
+#	  http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+#	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # =================================================================
 
 # This is a terraform generated template generated from oracle_mysql_v57_standalone
 
 ##############################################################
-# Keys - CAMC (public/private) & optional User Key (public) 
+# Keys - CAMC (public/private) & optional User Key (public)
 ##############################################################
 variable "user_public_ssh_key" {
   type = "string"
   description = "User defined public SSH key used to connect to the virtual machine. The format must be in openSSH."
+  default = "None"
+}
+
+variable "ibm_stack_id" {
+  description = "A unique stack id."
 }
 
 variable "ibm_pm_public_ssh_key" {
@@ -26,36 +39,52 @@ variable "ibm_pm_private_ssh_key" {
 
 variable "allow_unverified_ssl" {
   description = "Communication with vsphere server with self signed certificate"
+  default = "true"
 }
 
 ##############################################################
-# Define the vsphere provider 
+# Define the vsphere provider
 ##############################################################
 provider "vsphere" {
   allow_unverified_ssl = "${var.allow_unverified_ssl}"
-  version = "~> 0.4"
+  version = "~> 1.2"
 }
 
 provider "camc" {
   version = "~> 0.1"
 }
 
-provider "random" {
-  version = "~> 1.0"
-}
-
-resource "random_id" "stack_id" {
-  byte_length = "16"
-}
-
 ##############################################################
-# Define pattern variables 
+# Define pattern variables
 ##############################################################
 ##### unique stack name #####
 variable "ibm_stack_name" {
   description = "A unique stack name."
 }
 
+##############################################################
+# Vsphere data for provider
+##############################################################
+data "vsphere_datacenter" "MySQLNode01_datacenter" {
+  name = "${var.MySQLNode01_datacenter}"
+}
+data "vsphere_datastore" "MySQLNode01_datastore" {
+  name = "${var.MySQLNode01_root_disk_datastore}"
+  datacenter_id = "${data.vsphere_datacenter.MySQLNode01_datacenter.id}"
+}
+data "vsphere_resource_pool" "MySQLNode01_resource_pool" {
+  name = "${var.MySQLNode01_resource_pool}"
+  datacenter_id = "${data.vsphere_datacenter.MySQLNode01_datacenter.id}"
+}
+data "vsphere_network" "MySQLNode01_network" {
+  name = "${var.MySQLNode01_network_interface_label}"
+  datacenter_id = "${data.vsphere_datacenter.MySQLNode01_datacenter.id}"
+}
+
+data "vsphere_virtual_machine" "MySQLNode01_template" {
+  name = "${var.MySQLNode01-image}"
+  datacenter_id = "${data.vsphere_datacenter.MySQLNode01_datacenter.id}"
+}
 
 ##### Environment variables #####
 #Variable : ibm_pm_access_token
@@ -86,6 +115,7 @@ variable "ibm_sw_repo_password" {
 variable "ibm_sw_repo_user" {
   type = "string"
   description = "IBM Software Repo Username"
+  default = "repouser"
 }
 
 
@@ -112,18 +142,21 @@ variable "MySQLNode01-os_admin_user" {
 variable "MySQLNode01_mysql_config_data_dir" {
   type = "string"
   description = "Directory to store information managed by MySQL server"
+  default = "/var/lib/mysql"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_database_name
 variable "MySQLNode01_mysql_config_databases_database_1_database_name" {
   type = "string"
   description = "Create a sample database in MySQL"
+  default = "default_database"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_1_name
 variable "MySQLNode01_mysql_config_databases_database_1_users_user_1_name" {
   type = "string"
   description = "Name of the first user which is created and allowed to access the created sample database "
+  default = "defaultUser"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_1_password
@@ -142,48 +175,56 @@ variable "MySQLNode01_mysql_config_databases_database_1_users_user_2_password" {
 variable "MySQLNode01_mysql_config_log_file" {
   type = "string"
   description = "Log file configured in MySQL"
+  default = "/var/log/mysqld.log"
 }
 
 #Variable : MySQLNode01_mysql_config_port
 variable "MySQLNode01_mysql_config_port" {
   type = "string"
   description = "Listen port to be configured in MySQL"
+  default = "3306"
 }
 
 #Variable : MySQLNode01_mysql_install_from_repo
 variable "MySQLNode01_mysql_install_from_repo" {
   type = "string"
   description = "Install MySQL from secure repository server or yum repo"
+  default = "true"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_gid
 variable "MySQLNode01_mysql_os_users_daemon_gid" {
   type = "string"
   description = "Group ID of the default OS user to be used to configure MySQL"
+  default = "mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_home
 variable "MySQLNode01_mysql_os_users_daemon_home" {
   type = "string"
   description = "Home directory of the default OS user to be used to configure MySQL"
+  default = "/home/mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_ldap_user
 variable "MySQLNode01_mysql_os_users_daemon_ldap_user" {
   type = "string"
   description = "A flag which indicates whether to create the MQ USer locally, or utilise an LDAP based user."
+  default = "false"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_name
 variable "MySQLNode01_mysql_os_users_daemon_name" {
   type = "string"
   description = "User Name of the default OS user to be used to configure MySQL"
+  default = "mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_shell
 variable "MySQLNode01_mysql_os_users_daemon_shell" {
   type = "string"
   description = "Default shell configured on Linux server"
+  default = "/bin/bash"
 }
 
 #Variable : MySQLNode01_mysql_root_password
@@ -196,6 +237,7 @@ variable "MySQLNode01_mysql_root_password" {
 variable "MySQLNode01_mysql_version" {
   type = "string"
   description = "MySQL Version to be installed"
+  default = "5.7.17"
 }
 
 
@@ -224,14 +266,20 @@ variable "MySQLNode01_domain" {
 
 variable "MySQLNode01_number_of_vcpu" {
   description = "Number of virtual CPU for the virtual machine, which is required to be a positive Integer"
+  default = "2"
 }
 
 variable "MySQLNode01_memory" {
   description = "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024"
+  default = "4096"
 }
 
 variable "MySQLNode01_cluster" {
   description = "Target vSphere cluster to host the virtual machine"
+}
+
+variable "MySQLNode01_resource_pool" {
+  description = "Target vSphere Resource Pool to host the virtual machine"
 }
 
 variable "MySQLNode01_dns_suffixes" {
@@ -262,53 +310,59 @@ variable "MySQLNode01_ipv4_prefix_length" {
 
 variable "MySQLNode01_adapter_type" {
   description = "Network adapter type for vNIC Configuration"
+  default = "vmxnet3"
 }
 
 variable "MySQLNode01_root_disk_datastore" {
   description = "Data store or storage cluster name for target virtual machine's disks"
 }
 
-variable "MySQLNode01_root_disk_type" {
-  type = "string"
-  description = "Type of template disk volume"
-}
-
-variable "MySQLNode01_root_disk_controller_type" {
-  type = "string"
-  description = "Type of template disk controller"
-}
-
 variable "MySQLNode01_root_disk_keep_on_remove" {
   type = "string"
   description = "Delete template disk volume when the virtual machine is deleted"
+  default = "false"
+}
+
+variable "MySQLNode01_root_disk_size" {
+  description = "Size of template disk volume. Should be equal to template's disk size"
+  default = "100"
 }
 
 # vsphere vm
 resource "vsphere_virtual_machine" "MySQLNode01" {
   name = "${var.MySQLNode01-name}"
-  domain = "${var.MySQLNode01_domain}"
   folder = "${var.MySQLNode01_folder}"
-  datacenter = "${var.MySQLNode01_datacenter}"
-  vcpu = "${var.MySQLNode01_number_of_vcpu}"
+  num_cpus = "${var.MySQLNode01_number_of_vcpu}"
   memory = "${var.MySQLNode01_memory}"
-  cluster = "${var.MySQLNode01_cluster}"
-  dns_suffixes = "${var.MySQLNode01_dns_suffixes}"
-  dns_servers = "${var.MySQLNode01_dns_servers}"
+  resource_pool_id = "${data.vsphere_resource_pool.MySQLNode01_resource_pool.id}"
+  datastore_id = "${data.vsphere_datastore.MySQLNode01_datastore.id}"
+  guest_id = "${data.vsphere_virtual_machine.MySQLNode01_template.guest_id}"
+  clone {
+    template_uuid = "${data.vsphere_virtual_machine.MySQLNode01_template.id}"
+    customize {
+      linux_options {
+        domain = "${var.MySQLNode01_domain}"
+        host_name = "${var.MySQLNode01-name}"
+      }
+    network_interface {
+      ipv4_address = "${var.MySQLNode01_ipv4_address}"
+      ipv4_netmask = "${var.MySQLNode01_ipv4_prefix_length}"
+    }
+    ipv4_gateway = "${var.MySQLNode01_ipv4_gateway}"
+    dns_suffix_list = "${var.MySQLNode01_dns_suffixes}"
+    dns_server_list = "${var.MySQLNode01_dns_servers}"
+    }
+  }
 
   network_interface {
-    label = "${var.MySQLNode01_network_interface_label}"
-    ipv4_gateway = "${var.MySQLNode01_ipv4_gateway}"
-    ipv4_address = "${var.MySQLNode01_ipv4_address}"
-    ipv4_prefix_length = "${var.MySQLNode01_ipv4_prefix_length}"
+    network_id = "${data.vsphere_network.MySQLNode01_network.id}"
     adapter_type = "${var.MySQLNode01_adapter_type}"
   }
 
   disk {
-    type = "${var.MySQLNode01_root_disk_type}"
-    template = "${var.MySQLNode01-image}"
-    datastore = "${var.MySQLNode01_root_disk_datastore}"
+    label = "${var.MySQLNode01-name}.disk0"
+    size = "${var.MySQLNode01_root_disk_size}"
     keep_on_remove = "${var.MySQLNode01_root_disk_keep_on_remove}"
-    controller_type = "${var.MySQLNode01_root_disk_controller_type}"
   }
 
   # Specify the connection
@@ -322,11 +376,20 @@ resource "vsphere_virtual_machine" "MySQLNode01" {
     destination = "MySQLNode01_add_ssh_key.sh"
     content     = <<EOF
 # =================================================================
-# Licensed Materials - Property of IBM
-# 5737-E67
-# @ Copyright IBM Corporation 2016, 2017 All Rights Reserved
-# US Government Users Restricted Rights - Use, duplication or disclosure
-# restricted by GSA ADP Schedule Contract with IBM Corp.
+# Copyright 2017 IBM Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+#	you may not use this file except in compliance with the License.
+#	You may obtain a copy of the License at
+#
+#	  http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+#	WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # =================================================================
 #!/bin/bash
 
@@ -400,17 +463,17 @@ resource "camc_bootstrap" "MySQLNode01_chef_bootstrap_comp" {
   data = <<EOT
 {
   "os_admin_user": "${var.MySQLNode01-os_admin_user}",
-  "stack_id": "${random_id.stack_id.hex}",
+  "stack_id": "${var.ibm_stack_id}",
   "environment_name": "_default",
-  "host_ip": "${vsphere_virtual_machine.MySQLNode01.network_interface.0.ipv4_address}",
+  "host_ip": "${vsphere_virtual_machine.MySQLNode01.clone.0.customize.0.network_interface.0.ipv4_address}",
   "node_name": "${var.MySQLNode01-name}",
   "node_attributes": {
     "ibm_internal": {
-      "stack_id": "${random_id.stack_id.hex}",
+      "stack_id": "${var.ibm_stack_id}",
       "stack_name": "${var.ibm_stack_name}",
       "vault": {
         "item": "secrets",
-        "name": "${random_id.stack_id.hex}"
+        "name": "${var.ibm_stack_id}"
       }
     }
   }
@@ -433,9 +496,9 @@ resource "camc_softwaredeploy" "MySQLNode01_oracle_mysql_base" {
   data = <<EOT
 {
   "os_admin_user": "${var.MySQLNode01-os_admin_user}",
-  "stack_id": "${random_id.stack_id.hex}",
+  "stack_id": "${var.ibm_stack_id}",
   "environment_name": "_default",
-  "host_ip": "${vsphere_virtual_machine.MySQLNode01.network_interface.0.ipv4_address}",
+  "host_ip": "${vsphere_virtual_machine.MySQLNode01.clone.0.customize.0.network_interface.0.ipv4_address}",
   "node_name": "${var.MySQLNode01-name}",
   "runlist": "role[oracle_mysql_base]",
   "node_attributes": {
@@ -499,7 +562,7 @@ resource "camc_softwaredeploy" "MySQLNode01_oracle_mysql_base" {
         "root_password": "${var.MySQLNode01_mysql_root_password}"
       }
     },
-    "vault": "${random_id.stack_id.hex}"
+    "vault": "${var.ibm_stack_id}"
   }
 }
 EOT
@@ -520,14 +583,14 @@ resource "camc_vaultitem" "VaultItem" {
   "vault_content": {
     "item": "secrets",
     "values": {},
-    "vault": "${random_id.stack_id.hex}"
+    "vault": "${var.ibm_stack_id}"
   }
 }
 EOT
 }
 
 output "MySQLNode01_ip" {
-  value = "VM IP Address : ${vsphere_virtual_machine.MySQLNode01.network_interface.0.ipv4_address}"
+  value = "VM IP Address : ${vsphere_virtual_machine.MySQLNode01.clone.0.customize.0.network_interface.0.ipv4_address}"
 }
 
 output "MySQLNode01_name" {
@@ -539,6 +602,5 @@ output "MySQLNode01_roles" {
 }
 
 output "stack_id" {
-  value = "${random_id.stack_id.hex}"
+  value = "${var.ibm_stack_id}"
 }
-

@@ -1,11 +1,11 @@
 {
-  "input_namespaces": [
+  "input_datatypes": [
     {
       "name": "advanced_content_runtime_chef",
       "label": "Advanced Content Runtime"
     }
   ],
-  "output_namespace": "content_template_output",
+  "output_datatype": "content_template_output",
   "input_groups": [
     {
       "name": "cloud",
@@ -35,6 +35,17 @@
     }
   ],
   "template_input_params": [
+    {
+      "name": "ibm_stack_id",
+      "type": "string",
+      "description": "A unique stack id.",
+      "hidden": true,
+      "label": "A unique stack id.",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment"
+    },
     {
       "name": "ibm_stack_name",
       "type": "string",
@@ -156,7 +167,7 @@
       "name": "MySQLNode01_root_block_device_volume_size",
       "type": "string",
       "description": "AWS Root Block Device Volume Size",
-      "default": 25,
+      "default": "100",
       "hidden": false,
       "label": "AWS Root Block Device Volume Size",
       "secured": false,
@@ -323,6 +334,7 @@
       "secured": true,
       "required": true,
       "immutable": true,
+      "immutable_after_create": true,
       "group_name": "environment",
       "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
     },
@@ -335,6 +347,7 @@
       "secured": false,
       "required": true,
       "immutable": true,
+      "immutable_after_create": true,
       "group_name": "environment",
       "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
     },
@@ -348,6 +361,7 @@
       "secured": false,
       "required": true,
       "immutable": true,
+      "immutable_after_create": true,
       "group_name": "environment"
     },
     {
@@ -433,11 +447,11 @@
       "hidden": false,
       "label": "MySQL root password - MySQLNode01",
       "secured": true,
-      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
-      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
+      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "group_name": "mysqlnode01"
     },
     {
@@ -504,15 +518,15 @@
     {
       "name": "MySQLNode01_mysql_config_databases_database_1_users_user_1_password",
       "type": "string",
-      "description": "Name of the second user which is created and allowed to access the created sample database",
+      "description": "Password of the first user",
       "hidden": false,
       "label": "Second User Name to Access the Sample Database - MySQLNode01",
       "secured": true,
-      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
-      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
+      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "group_name": "mysqlnode01"
     },
     {
@@ -522,11 +536,11 @@
       "hidden": false,
       "label": "Second User Password to Access the Sample Database - MySQLNode01",
       "secured": true,
-      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
-      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
+      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "group_name": "mysqlnode01"
     },
     {

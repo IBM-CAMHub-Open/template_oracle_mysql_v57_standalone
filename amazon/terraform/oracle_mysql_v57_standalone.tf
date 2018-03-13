@@ -1,15 +1,23 @@
 # =================================================================
-# Licensed Materials - Property of IBM
-# 5737-E67
-# @ Copyright IBM Corporation 2016, 2017 All Rights Reserved
-# US Government Users Restricted Rights - Use, duplication or disclosure
-# restricted by GSA ADP Schedule Contract with IBM Corp.
+# Copyright 2017 IBM Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+#	you may not use this file except in compliance with the License.
+#	You may obtain a copy of the License at
+#
+#	  http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+#	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # =================================================================
 
 # This is a terraform generated template generated from oracle_mysql_v57_standalone
 
 ##############################################################
-# Keys - CAMC (public/private) & optional User Key (public) 
+# Keys - CAMC (public/private) & optional User Key (public)
 ##############################################################
 variable "ibm_pm_public_ssh_key_name" {
   description = "Public CAMC SSH key name used to connect to the virtual guest."
@@ -22,18 +30,25 @@ variable "ibm_pm_private_ssh_key" {
 variable "user_public_ssh_key" {
   type = "string"
   description = "User defined public SSH key used to connect to the virtual machine. The format must be in openSSH."
+  default = "None"
+}
+
+variable "ibm_stack_id" {
+  description = "A unique stack id."
 }
 
 variable "aws_ami_owner_id" {
   description = "AWS AMI Owner ID"
+  default = "309956199498"
 }
 
 variable "aws_region" {
   description = "AWS Region Name"
+  default = "us-east-1"
 }
 
 ##############################################################
-# Define the aws provider 
+# Define the aws provider
 ##############################################################
 provider "aws" {
   region = "${var.aws_region}"
@@ -45,10 +60,6 @@ provider "camc" {
 }
 
 provider "template" {
-  version = "~> 1.0"
-}
-
-provider "random" {
   version = "~> 1.0"
 }
 
@@ -74,12 +85,8 @@ variable "aws_sg_camc_name" {
   description = "AWS Security Group Name"
 }
 
-resource "random_id" "stack_id" {
-  byte_length = "16"
-}
-
 ##############################################################
-# Define pattern variables 
+# Define pattern variables
 ##############################################################
 ##### unique stack name #####
 variable "ibm_stack_name" {
@@ -116,6 +123,7 @@ variable "ibm_sw_repo_password" {
 variable "ibm_sw_repo_user" {
   type = "string"
   description = "IBM Software Repo Username"
+  default = "repouser"
 }
 
 
@@ -133,6 +141,7 @@ data "aws_ami" "MySQLNode01_ami" {
 variable "MySQLNode01-image" {
   type = "string"
   description = "Operating system image id / template that should be used when creating the virtual image"
+  default = "RHEL-7.4_HVM_GA"
 }
 
 #Variable : MySQLNode01-name
@@ -151,18 +160,21 @@ variable "MySQLNode01-os_admin_user" {
 variable "MySQLNode01_mysql_config_data_dir" {
   type = "string"
   description = "Directory to store information managed by MySQL server"
+  default = "/var/lib/mysql"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_database_name
 variable "MySQLNode01_mysql_config_databases_database_1_database_name" {
   type = "string"
   description = "Create a sample database in MySQL"
+  default = "default_database"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_1_name
 variable "MySQLNode01_mysql_config_databases_database_1_users_user_1_name" {
   type = "string"
   description = "Name of the first user which is created and allowed to access the created sample database "
+  default = "defaultUser"
 }
 
 #Variable : MySQLNode01_mysql_config_databases_database_1_users_user_1_password
@@ -181,48 +193,56 @@ variable "MySQLNode01_mysql_config_databases_database_1_users_user_2_password" {
 variable "MySQLNode01_mysql_config_log_file" {
   type = "string"
   description = "Log file configured in MySQL"
+  default = "/var/log/mysqld.log"
 }
 
 #Variable : MySQLNode01_mysql_config_port
 variable "MySQLNode01_mysql_config_port" {
   type = "string"
   description = "Listen port to be configured in MySQL"
+  default = "3306"
 }
 
 #Variable : MySQLNode01_mysql_install_from_repo
 variable "MySQLNode01_mysql_install_from_repo" {
   type = "string"
   description = "Install MySQL from secure repository server or yum repo"
+  default = "true"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_gid
 variable "MySQLNode01_mysql_os_users_daemon_gid" {
   type = "string"
   description = "Group ID of the default OS user to be used to configure MySQL"
+  default = "mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_home
 variable "MySQLNode01_mysql_os_users_daemon_home" {
   type = "string"
   description = "Home directory of the default OS user to be used to configure MySQL"
+  default = "/home/mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_ldap_user
 variable "MySQLNode01_mysql_os_users_daemon_ldap_user" {
   type = "string"
   description = "A flag which indicates whether to create the MQ USer locally, or utilise an LDAP based user."
+  default = "false"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_name
 variable "MySQLNode01_mysql_os_users_daemon_name" {
   type = "string"
   description = "User Name of the default OS user to be used to configure MySQL"
+  default = "mysql"
 }
 
 #Variable : MySQLNode01_mysql_os_users_daemon_shell
 variable "MySQLNode01_mysql_os_users_daemon_shell" {
   type = "string"
   description = "Default shell configured on Linux server"
+  default = "/bin/bash"
 }
 
 #Variable : MySQLNode01_mysql_root_password
@@ -235,6 +255,7 @@ variable "MySQLNode01_mysql_root_password" {
 variable "MySQLNode01_mysql_version" {
   type = "string"
   description = "MySQL Version to be installed"
+  default = "5.7.17"
 }
 
 
@@ -243,17 +264,20 @@ variable "MySQLNode01_mysql_version" {
 variable "MySQLNode01-flavor" {
   type = "string"
   description = "MySQLNode01 Flavor"
+  default = "t2.medium"
 }
 
 #Variable : MySQLNode01-mgmt-network-public
 variable "MySQLNode01-mgmt-network-public" {
   type = "string"
   description = "Expose and use public IP of virtual machine for internal communication"
+  default = "true"
 }
 
 ##### domain name #####
 variable "runtime_domain" {
   description = "domain name"
+  default = "cam.ibm.com"
 }
 
 
@@ -280,6 +304,7 @@ variable "MySQLNode01_subnet_name" {
 variable "MySQLNode01_associate_public_ip_address" {
   type = "string"
   description = "AWS assign a public IP to instance"
+  default = "true"
 }
 
 
@@ -287,6 +312,7 @@ variable "MySQLNode01_associate_public_ip_address" {
 variable "MySQLNode01_root_block_device_volume_type" {
   type = "string"
   description = "AWS Root Block Device Volume Type"
+  default = "gp2"
 }
 
 
@@ -294,6 +320,7 @@ variable "MySQLNode01_root_block_device_volume_type" {
 variable "MySQLNode01_root_block_device_volume_size" {
   type = "string"
   description = "AWS Root Block Device Volume Size"
+  default = "100"
 }
 
 
@@ -301,6 +328,7 @@ variable "MySQLNode01_root_block_device_volume_size" {
 variable "MySQLNode01_root_block_device_delete_on_termination" {
   type = "string"
   description = "AWS Root Block Device Delete on Termination"
+  default = "true"
 }
 
 resource "aws_instance" "MySQLNode01" {
@@ -324,11 +352,20 @@ resource "aws_instance" "MySQLNode01" {
     destination = "MySQLNode01_add_ssh_key.sh"
     content     = <<EOF
 # =================================================================
-# Licensed Materials - Property of IBM
-# 5737-E67
-# @ Copyright IBM Corporation 2016, 2017 All Rights Reserved
-# US Government Users Restricted Rights - Use, duplication or disclosure
-# restricted by GSA ADP Schedule Contract with IBM Corp.
+# Copyright 2017 IBM Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+#	you may not use this file except in compliance with the License.
+#	You may obtain a copy of the License at
+#
+#	  http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+#	WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # =================================================================
 #!/bin/bash
 
@@ -407,17 +444,17 @@ resource "camc_bootstrap" "MySQLNode01_chef_bootstrap_comp" {
   data = <<EOT
 {
   "os_admin_user": "${var.MySQLNode01-os_admin_user}",
-  "stack_id": "${random_id.stack_id.hex}",
+  "stack_id": "${var.ibm_stack_id}",
   "environment_name": "_default",
   "host_ip": "${var.MySQLNode01-mgmt-network-public == "false" ? aws_instance.MySQLNode01.private_ip : aws_instance.MySQLNode01.public_ip}",
   "node_name": "${var.MySQLNode01-name}",
   "node_attributes": {
     "ibm_internal": {
-      "stack_id": "${random_id.stack_id.hex}",
+      "stack_id": "${var.ibm_stack_id}",
       "stack_name": "${var.ibm_stack_name}",
       "vault": {
         "item": "secrets",
-        "name": "${random_id.stack_id.hex}"
+        "name": "${var.ibm_stack_id}"
       }
     }
   }
@@ -440,7 +477,7 @@ resource "camc_softwaredeploy" "MySQLNode01_oracle_mysql_base" {
   data = <<EOT
 {
   "os_admin_user": "${var.MySQLNode01-os_admin_user}",
-  "stack_id": "${random_id.stack_id.hex}",
+  "stack_id": "${var.ibm_stack_id}",
   "environment_name": "_default",
   "host_ip": "${var.MySQLNode01-mgmt-network-public == "false" ? aws_instance.MySQLNode01.private_ip : aws_instance.MySQLNode01.public_ip}",
   "node_name": "${var.MySQLNode01-name}",
@@ -506,7 +543,7 @@ resource "camc_softwaredeploy" "MySQLNode01_oracle_mysql_base" {
         "root_password": "${var.MySQLNode01_mysql_root_password}"
       }
     },
-    "vault": "${random_id.stack_id.hex}"
+    "vault": "${var.ibm_stack_id}"
   }
 }
 EOT
@@ -527,7 +564,7 @@ resource "camc_vaultitem" "VaultItem" {
   "vault_content": {
     "item": "secrets",
     "values": {},
-    "vault": "${random_id.stack_id.hex}"
+    "vault": "${var.ibm_stack_id}"
   }
 }
 EOT
@@ -546,6 +583,5 @@ output "MySQLNode01_roles" {
 }
 
 output "stack_id" {
-  value = "${random_id.stack_id.hex}"
+  value = "${var.ibm_stack_id}"
 }
-

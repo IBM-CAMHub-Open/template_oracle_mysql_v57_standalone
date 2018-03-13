@@ -1,7 +1,7 @@
 {
-    "name": "MySQL DB Deployment V5.7 on a single virtual machine - VMware vSphere",
+    "name": "MySQL DB Deployment V5.7 on a single virtual machine - IBM",
     "description": "This template deploys Oracle MySQL V5.7 on a Linux virtual machine.",
-    "version": "1.0.2",
+    "version": "2.0",
     "imageUrl": "",
     "image": "",
     "type": "chefcontent",
@@ -9,7 +9,7 @@
     "manifest": {
       "template_type": "Terraform",
       "template_format": "HCL",
-      "template_provider": "VMware vSphere",
+      "template_provider": "IBM",
       "template": {
         "templateData": "",
         "templateVariables": "",
@@ -18,20 +18,17 @@
       "template_source": {
         "githubRepoUrl": "",
         "githubAccessToken": "",
-        "relativePathToTemplateFolder": "vmware/terraform",
+        "relativePathToTemplateFolder": "ibmcloud/terraform",
         "templateFileName": "oracle_mysql_v57_standalone.tf"
       }
     },
     "metadata": {
       "displayName": "MySQL DB Deployment V5.7 on a single virtual machine",
-      "providerDisplayName": "VMware vSphere",
+      "providerDisplayName": "IBM",
       "longDescription": "This template deploys Oracle MySQL V5.7 on a Linux virtual machine.",
       "bullets": [{
     "title": "Clouds",
-    "description": " VMware<br>"},
-{
-    "title": "Template Version",
-    "description": "1.0.2<br>"},
+    "description": " IBM Cloud<br>"},
 {
     "title": "Operating Systems Supported",
     "description": "Red Hat Enterprise Linux 7<br>Ubuntu 16.04<br>"},
@@ -43,7 +40,7 @@
     "description": "Oracle MySQL V5.7<br>"},
 {
     "title": "Default Virtual Machine Settings",
-    "description": " vCPU 2, Memory (GB) 4<br>"},
+    "description": " Cores 2, RAM (GB) 4, SAN Disk (GB) 100<br>"},
 {
     "title": "Usage and Special Notes",
     "description": "1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>2. Detailed system requirements for Oracle Database V5.7 - <a href=\"https://dev.mysql.com/doc/refman/5.7/en/\" target=\"_blank\">https://dev.mysql.com/doc/refman/5.7/en/</a><br>"}
