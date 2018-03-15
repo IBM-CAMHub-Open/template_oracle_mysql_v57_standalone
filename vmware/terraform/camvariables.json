@@ -313,7 +313,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
       "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "group_name": "mysqlnode01"
     },
@@ -417,12 +417,12 @@
       "type": "string",
       "description": "Password of the first user",
       "hidden": false,
-      "label": "Second User Name to Access the Sample Database - MySQLNode01",
+      "label": "First User Password to Access the Sample Database - MySQLNode01",
       "secured": true,
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
       "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "group_name": "mysqlnode01"
     },
@@ -436,7 +436,7 @@
       "required": true,
       "immutable": false,
       "immutable_after_create": true,
-      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+      "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
       "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
       "group_name": "mysqlnode01"
     },
