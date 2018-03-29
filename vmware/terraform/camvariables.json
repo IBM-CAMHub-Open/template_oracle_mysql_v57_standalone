@@ -314,7 +314,7 @@
       "immutable": false,
       "immutable_after_create": true,
       "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
-      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
+      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character from supported list '$@$!%*?&'.",
       "group_name": "mysqlnode01"
     },
     {
@@ -423,7 +423,7 @@
       "immutable": false,
       "immutable_after_create": true,
       "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
-      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
+      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character from supported list '$@$!%*?&' .",
       "group_name": "mysqlnode01"
     },
     {
@@ -437,7 +437,7 @@
       "immutable": false,
       "immutable_after_create": true,
       "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}$",
-      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
+      "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character from supported list '$@$!%*?&' .",
       "group_name": "mysqlnode01"
     },
     {
