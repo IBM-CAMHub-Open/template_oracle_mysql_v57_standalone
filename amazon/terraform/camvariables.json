@@ -133,7 +133,7 @@
         },
         {
           "value": "sa-east-1",
-          "label": "South America (São Paulo)"
+          "label": "South America (S\u00e3o Paulo)"
         }
       ],
       "required": true,
@@ -327,7 +327,7 @@
     },
     {
       "name": "ibm_sw_repo_password",
-      "type": "string",
+      "type": "password",
       "description": "IBM Software Repo Password",
       "hidden": true,
       "label": "IBM Software Repo Password",
@@ -442,7 +442,7 @@
     },
     {
       "name": "MySQLNode01_mysql_root_password",
-      "type": "string",
+      "type": "password",
       "description": "The password for the MySQL root user",
       "hidden": false,
       "label": "MySQL root password - MySQLNode01",
@@ -517,7 +517,7 @@
     },
     {
       "name": "MySQLNode01_mysql_config_databases_database_1_users_user_1_password",
-      "type": "string",
+      "type": "password",
       "description": "Password of the first user",
       "hidden": false,
       "label": "First User Password to Access the Sample Database - MySQLNode01",
@@ -531,7 +531,7 @@
     },
     {
       "name": "MySQLNode01_mysql_config_databases_database_1_users_user_2_password",
-      "type": "string",
+      "type": "password",
       "description": "Password of the second user",
       "hidden": false,
       "label": "Second User Password to Access the Sample Database - MySQLNode01",

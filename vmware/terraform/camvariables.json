@@ -190,7 +190,7 @@
     },
     {
       "name": "ibm_sw_repo_password",
-      "type": "string",
+      "type": "password",
       "description": "IBM Software Repo Password",
       "hidden": true,
       "label": "IBM Software Repo Password",
@@ -305,7 +305,7 @@
     },
     {
       "name": "MySQLNode01_mysql_root_password",
-      "type": "string",
+      "type": "password",
       "description": "The password for the MySQL root user",
       "hidden": false,
       "label": "MySQL root password - MySQLNode01",
@@ -354,7 +354,7 @@
     },
     {
       "name": "MySQLNode01-os_password",
-      "type": "string",
+      "type": "password",
       "description": "Operating System Password for the Operating System User to access virtual machine",
       "hidden": false,
       "label": "Operating system password - MySQLNode01",
@@ -414,7 +414,7 @@
     },
     {
       "name": "MySQLNode01_mysql_config_databases_database_1_users_user_1_password",
-      "type": "string",
+      "type": "password",
       "description": "Password of the first user",
       "hidden": false,
       "label": "First User Password to Access the Sample Database - MySQLNode01",
@@ -428,7 +428,7 @@
     },
     {
       "name": "MySQLNode01_mysql_config_databases_database_1_users_user_2_password",
-      "type": "string",
+      "type": "password",
       "description": "Password of the second user",
       "hidden": false,
       "label": "Second User Password to Access the Sample Database - MySQLNode01",
