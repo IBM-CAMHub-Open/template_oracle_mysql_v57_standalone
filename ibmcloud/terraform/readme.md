@@ -215,13 +215,13 @@ The following files are neccessary on the Software Repository to successfully in
     <td>5.7.17</td>
     <td>Ubuntu 14.x</td>
     <td>/oracle/mysql/v5.7.17/base</td>
-    <td><br>mysql-5.7.17-1ubuntu14.04_amd64.deb-bundle.tar</br></td>
+    <td><br>mysql-server_5.7.17-1ubuntu14.04_amd64.deb-bundle.tar</br></td>
   </tr>
   <tr>
     <td>5.7.17</td>
     <td>Ubuntu 16.x</td>
     <td>/oracle/mysql/v5.7.17/base</td>
-    <td><br>mysql-5.7.17-1ubuntu16.04_amd64.deb-bundle.tar</br></td>
+    <td><br>mysql-server_5.7.17-1ubuntu16.10_amd64.deb-bundle.tar</br></td>
   </tr>
 </table>
 
