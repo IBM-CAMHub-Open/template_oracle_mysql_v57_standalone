@@ -329,6 +329,19 @@ variable "MySQLNode01_root_disk_size" {
   default     = "100"
 }
 
+module "provision_proxy" {
+  source 						= "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//vmware/proxy"
+  ip                  = "${var.MySQLNode01_ipv4_address}"
+  id									= "${vsphere_virtual_machine.MySQLNode01.id}"
+  ssh_user            = "${var.MySQLNode01-os_admin_user}"
+  ssh_password        = "${var.MySQLNode01-os_password}"
+  http_proxy_host     = "${var.http_proxy_host}"
+  http_proxy_user     = "${var.http_proxy_user}"
+  http_proxy_password = "${var.http_proxy_password}"
+  http_proxy_port     = "${var.http_proxy_port}"
+  enable							= "${ length(var.http_proxy_host) > 0 ? "true" : "false"}"
+}
+
 # vsphere vm
 resource "vsphere_virtual_machine" "MySQLNode01" {
   name             = "${var.MySQLNode01-name}"
@@ -376,6 +389,12 @@ resource "vsphere_virtual_machine" "MySQLNode01" {
     type     = "ssh"
     user     = "${var.MySQLNode01-os_admin_user}"
     password = "${var.MySQLNode01-os_password}"
+    bastion_host        = "${var.bastion_host}"
+    bastion_user        = "${var.bastion_user}"
+    bastion_private_key = "${ length(var.bastion_private_key) > 0 ? base64decode(var.bastion_private_key) : var.bastion_private_key}"
+    bastion_port        = "${var.bastion_port}"
+    bastion_host_key    = "${var.bastion_host_key}"
+    bastion_password    = "${var.bastion_password}"    
   }
 
   provisioner "file" {
@@ -460,7 +479,7 @@ EOF
 #########################################################
 
 resource "camc_bootstrap" "MySQLNode01_chef_bootstrap_comp" {
-  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.MySQLNode01"]
+  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.MySQLNode01", "module.provision_proxy"]
   name            = "MySQLNode01_chef_bootstrap_comp"
   camc_endpoint   = "${var.ibm_pm_service}/v1/bootstrap/chef"
   access_token    = "${var.ibm_pm_access_token}"

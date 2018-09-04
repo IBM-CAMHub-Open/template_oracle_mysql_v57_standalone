@@ -1,7 +1,7 @@
 {
     "name": "MySQL DB Deployment V5.7 on a single virtual machine - VMware vSphere",
     "description": "This template deploys Oracle MySQL V5.7 on a Linux virtual machine.",
-    "version": "2.0",
+    "version": "2.1",
     "imageUrl": "",
     "image": "",
     "type": "chefcontent",
