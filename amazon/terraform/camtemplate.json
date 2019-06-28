@@ -23,7 +23,6 @@
       }
     },
     "metadata": {
-      "displayName": "MySQL DB Deployment V5.7 on a single virtual machine",
       "providerDisplayName": "Amazon EC2",
       "longDescription": "This template deploys Oracle MySQL V5.7 on a Linux virtual machine.",
       "bullets": [{
